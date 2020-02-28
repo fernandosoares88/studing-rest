@@ -22,7 +22,7 @@ import com.exemplo.produtos.models.Produto;
 import com.exemplo.produtos.services.ProdutoService;
 
 @RestController
-@RequestMapping("/produtos")
+@RequestMapping("/rest/api/v1/produtos")
 public class ProdutoController {
 
 	@Autowired
