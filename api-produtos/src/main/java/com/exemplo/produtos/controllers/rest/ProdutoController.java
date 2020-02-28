@@ -6,9 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.bind.BindResult;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,14 +41,13 @@ public class ProdutoController {
 	}
 
 	@PostMapping
-	public Produto addProduto(@RequestBody Produto produto) {
+	public Produto addProduto(@RequestBody @Valid Produto produto) {
 		System.out.println(produto);
 		return produtoService.add(produto);
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Produto> atualizar(@PathVariable Long id, @RequestBody @Valid Produto produto,
-			BindingResult result) {
+	public ResponseEntity<Produto> atualizar(@PathVariable Long id, @RequestBody @Valid Produto produto) {
 		Produto existente = produtoService.findById(id);
 		if (existente == null)
 			return ResponseEntity.notFound().build();
