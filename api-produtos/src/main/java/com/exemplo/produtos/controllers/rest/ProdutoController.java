@@ -1,4 +1,4 @@
-package com.exemplo.rest.produtos.controllers;
+package com.exemplo.produtos.controllers.rest;
 
 import java.util.List;
 
@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.exemplo.rest.produtos.models.Produto;
-import com.exemplo.rest.produtos.services.ProdutoService;
+import com.exemplo.produtos.models.Produto;
+import com.exemplo.produtos.services.ProdutoService;
 
 @RestController
 @RequestMapping("/produtos")

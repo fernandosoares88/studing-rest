@@ -1,8 +1,8 @@
-package com.exemplo.rest.produtos.services;
+package com.exemplo.produtos.services;
 
 import java.util.List;
 
-import com.exemplo.rest.produtos.models.Produto;
+import com.exemplo.produtos.models.Produto;
 
 public interface ProdutoService {
 	
