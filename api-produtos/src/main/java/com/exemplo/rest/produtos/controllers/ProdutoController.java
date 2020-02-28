@@ -2,9 +2,13 @@ package com.exemplo.rest.produtos.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.bind.BindResult;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,7 +49,8 @@ public class ProdutoController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Produto> atualizar(@PathVariable Long id, @RequestBody Produto produto) {
+	public ResponseEntity<Produto> atualizar(@PathVariable Long id, @RequestBody @Valid Produto produto,
+			BindingResult result) {
 		Produto existente = produtoService.findById(id);
 		if (existente == null)
 			return ResponseEntity.notFound().build();
@@ -53,9 +58,9 @@ public class ProdutoController {
 		existente = produtoService.update(existente);
 		return ResponseEntity.ok(existente);
 	}
-	
+
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> remover (@PathVariable Long id){
+	public ResponseEntity<Void> remover(@PathVariable Long id) {
 		Produto produto = produtoService.findById(id);
 		if (produto == null)
 			return ResponseEntity.notFound().build();
